@@ -1,16 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using BTCPayServer.Plugins.Template.Data;
+using BTCPayServer.Plugins.MyPlugin.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace BTCPayServer.Plugins.Template.Services;
+namespace BTCPayServer.Plugins.MyPlugin.Services;
 
-public class MyPluginService
+public class MyPluginPluginService
 {
     private readonly MyPluginDbContextFactory _pluginDbContextFactory;
 
-    public MyPluginService(MyPluginDbContextFactory pluginDbContextFactory)
+    public MyPluginPluginService(MyPluginDbContextFactory pluginDbContextFactory)
     {
         _pluginDbContextFactory = pluginDbContextFactory;
     }

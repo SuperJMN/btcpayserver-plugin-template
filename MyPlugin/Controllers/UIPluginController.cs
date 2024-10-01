@@ -2,28 +2,28 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using BTCPayServer.Abstractions.Constants;
 using BTCPayServer.Client;
-using BTCPayServer.Plugins.Template.Data;
-using BTCPayServer.Plugins.Template.Services;
+using BTCPayServer.Plugins.MyPlugin.Data;
+using BTCPayServer.Plugins.MyPlugin.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BTCPayServer.Plugins.Template;
+namespace BTCPayServer.Plugins.MyPlugin.Controllers;
 
-[Route("~/plugins/template")]
+[Route("~/plugins/MyPlugin")]
 [Authorize(AuthenticationSchemes = AuthenticationSchemes.Cookie, Policy = Policies.CanViewProfile)]
 public class UIPluginController : Controller
 {
-    private readonly MyPluginService _PluginService;
+    private readonly MyPluginPluginService _pluginService;
 
-    public UIPluginController(MyPluginService PluginService)
+    public UIPluginController(MyPluginPluginService pluginService)
     {
-        _PluginService = PluginService;
+        _pluginService = pluginService;
     }
 
     // GET
     public async Task<IActionResult> Index()
     {
-        return View(new PluginPageViewModel { Data = await _PluginService.Get() });
+        return View(new PluginPageViewModel { Data = await _pluginService.Get() });
     }
 }
 

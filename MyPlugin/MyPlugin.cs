@@ -1,12 +1,13 @@
 using BTCPayServer.Abstractions.Contracts;
 using BTCPayServer.Abstractions.Models;
 using BTCPayServer.Abstractions.Services;
-using BTCPayServer.Plugins.Template.Services;
+using BTCPayServer.Plugins.MyPlugin.Data;
+using BTCPayServer.Plugins.MyPlugin.Services;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BTCPayServer.Plugins.Template;
+namespace BTCPayServer.Plugins.MyPlugin;
 
-public class Plugin : BaseBTCPayServerPlugin
+public class MyPlugin : BaseBTCPayServerPlugin
 {
     public override IBTCPayServerPlugin.PluginDependency[] Dependencies { get; } =
     {
@@ -15,10 +16,10 @@ public class Plugin : BaseBTCPayServerPlugin
 
     public override void Execute(IServiceCollection services)
     {
-        services.AddSingleton<IUIExtension>(new UIExtension("TemplatePluginHeaderNav", "header-nav"));
+        services.AddSingleton<IUIExtension>(new UIExtension("MyPluginHeaderNav", "header-nav"));
         services.AddHostedService<ApplicationPartsLogger>();
-        services.AddHostedService<PluginMigrationRunner>();
-        services.AddSingleton<MyPluginService>();
+        services.AddHostedService<MyPluginMigrationRunner>();
+        services.AddSingleton<MyPluginPluginService>();
         services.AddSingleton<MyPluginDbContextFactory>();
         services.AddDbContext<MyPluginDbContext>((provider, o) =>
         {

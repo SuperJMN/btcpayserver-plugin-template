@@ -1,8 +1,9 @@
 using System;
+using BTCPayServer.Plugins.MyPlugin.Data;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace BTCPayServer.Plugins.Template.Migrations
+namespace BTCPayServer.Plugins.MyPlugin.Migrations
 {
     [DbContext(typeof(MyPluginDbContext))]
     [Migration("20201117154419_Init")]
@@ -11,11 +12,11 @@ namespace BTCPayServer.Plugins.Template.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.EnsureSchema(
-                name: "BTCPayServer.Plugins.Template");
+                name: "BTCPayServer.Plugins.MyPlugin");
 
             migrationBuilder.CreateTable(
                 name: "PluginRecords",
-                schema: "BTCPayServer.Plugins.Template",
+                schema: "BTCPayServer.Plugins.MyPlugin",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
@@ -23,7 +24,7 @@ namespace BTCPayServer.Plugins.Template.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PluginRecords", x => x.Id);
+                    table.PrimaryKey("PK_MyPluginRecords", x => x.Id);
                 });
         }
 
@@ -31,7 +32,7 @@ namespace BTCPayServer.Plugins.Template.Migrations
         {
             migrationBuilder.DropTable(
                 name: "PluginRecords",
-                schema: "BTCPayServer.Plugins.Template");
+                schema: "BTCPayServer.Plugins.MyPlugin");
         }
     }
 }

@@ -1,22 +1,22 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using BTCPayServer.Abstractions.Contracts;
-using BTCPayServer.Plugins.Template.Services;
+using BTCPayServer.Plugins.MyPlugin.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 
-namespace BTCPayServer.Plugins.Template;
+namespace BTCPayServer.Plugins.MyPlugin;
 
-public class PluginMigrationRunner : IHostedService
+public class MyPluginMigrationRunner : IHostedService
 {
     private readonly MyPluginDbContextFactory _pluginDbContextFactory;
-    private readonly MyPluginService _pluginService;
+    private readonly MyPluginPluginService _pluginService;
     private readonly ISettingsRepository _settingsRepository;
 
-    public PluginMigrationRunner(
+    public MyPluginMigrationRunner(
         ISettingsRepository settingsRepository,
         MyPluginDbContextFactory pluginDbContextFactory,
-        MyPluginService pluginService)
+        MyPluginPluginService pluginService)
     {
         _settingsRepository = settingsRepository;
         _pluginDbContextFactory = pluginDbContextFactory;

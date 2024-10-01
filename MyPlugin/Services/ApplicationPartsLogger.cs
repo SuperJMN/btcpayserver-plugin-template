@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace BTCPayServer.Plugins.Template.Services;
+namespace BTCPayServer.Plugins.MyPlugin.Services;
 
 public class ApplicationPartsLogger : IHostedService
 {
@@ -29,7 +29,7 @@ public class ApplicationPartsLogger : IHostedService
         ControllerFeature controllerFeature = new ControllerFeature();
         _partManager.PopulateFeature(controllerFeature);
 
-        // Get the names of all of the controllers
+        // Get the names of all controllers
         IEnumerable<string> controllers = controllerFeature.Controllers.Select(x => x.Name);
 
         // Log the application parts and controllers
